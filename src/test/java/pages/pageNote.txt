@@ -1,0 +1,42 @@
+For every screen/page in the application, we create a separate class for it and keep all the
+locators/WebElements of this page in this class and we create a key of locators which we will
+pass in every step
+
+page factory concept from selenium
+                                        => selenium + java   -> The Page Object Model (POM)
+page initialization concept from java
+
+The Page Object Model (POM) is a design pattern used in software development for creating automation tests.
+It is primarily employed in test automation frameworks, such as Selenium, to enhance the maintainability
+and re-usability of test scripts.
+
+The main idea behind the Page Object Model is to represent each web page or user interface (UI) element as a
+separate class, referred to as a "Page Object." These Page Objects encapsulate the various functionalities
+and interactions of the corresponding web page or UI element. By doing so, the test scripts can interact with
+the application's UI through these Page Objects instead of directly interacting with the HTML elements.
+
+The benefits of using the Page Object Model include:
+
+Modularity: Each web page or UI element is represented by a separate class, allowing for better organization
+and modular design of the automation code.
+
+Re-usability: Page Objects can be reused across multiple test cases, reducing duplication of code and improving
+maintainability.
+
+Easy maintenance: When the UI changes, updates only need to be made in the corresponding Page Object, rather
+than modifying every test script.
+
+Improved readability: Test scripts become more readable and self-explanatory as the interaction with UI elements
+is abstracted into methods and properties within the Page Objects.
+
+Collaboration: Testers and developers can work together more efficiently by using the same set of Page Objects
+as a common interface between testing and development teams.
+
+Overall, the Page Object Model design pattern promotes a structured and maintainable approach to automation
+testing, making it easier to develop and maintain robust automated tests for web applications.
+
+
+
+
+
+
