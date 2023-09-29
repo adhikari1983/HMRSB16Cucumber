@@ -47,6 +47,11 @@ public class Log {
         Log.info(message);
 
     }
+    public static void warning(String message) {
+
+        Log.info(message);
+
+    }
 
     public static void warn(String message) {
 

@@ -1,10 +1,8 @@
 package utils;
 
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.apache.log4j.xml.DOMConfigurator;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -17,20 +15,24 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
+import java.util.List;
+import java.util.Properties;
 
 public class CommonMethods extends PageInitializer {
 
     public static WebDriver driver;
 
     public static void openBrowserAndNavigateToURL() {
-        // reading the config.properties file
-        //read the property file from the given path                -> & Put it in ConfigReader
-        //the path is coming from the constants
+        /* reading the config.properties file
+          read the property file from the given path                -> & Put it in ConfigReader
+        the path is coming from the constants */
         ConfigReader.readProperties(Constants.CONFIG_READER_PATH);
+        /* ConfigReader => hold the Properties
+           Properties properties = ConfigReader.readProperties(Constants.CONFIG_READER_PATH);
 
-        //extracting the browser as a key from that config file    -> & fetching from the ConfigReader
-        //read the value of the property "url" from the config file
-        switch (ConfigReader.getPropertyValue("browser")) {
+          extracting the browser as a key from that config file    -> & fetching from the ConfigReader
+          read the value of the property "url" from the config file  */
+        switch (ConfigReader.getPropertyValue("browser")) {// switch (browser){  initially was like this, but we made it generic
             case "chrome":
                 driver = new ChromeDriver();
                 break;
@@ -40,26 +42,35 @@ public class CommonMethods extends PageInitializer {
                 break;
         }
 
-
         driver.manage().window().maximize();
-        driver.get(ConfigReader.getPropertyValue("url"));
+        driver.get(ConfigReader.getPropertyValue("url"));// driver.get(URL) initially was like this, but we made it generic
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         // this method is going to initialize all the objects
-        initializePageObjects();
+        initializePageObjects();// This will initialize all the pages we have in our Page
+        //PageInitializer class along with the launching of application
+        // To configure the File and pattern it has
+        DOMConfigurator.configure("log4j.xml");
+        Log.startTestCase("This is the beginning of my Test case");
+        Log.info("My test case is executing right now");
+        Log.warning("My test case might have some trivial issues");
+
     }
 
     //close the browser
     public static void closeBrowser() {
         if (driver != null) {
+            Log.info("This test case is about to get completed");
+            Log.endTestCase("This test case is finished");
             driver.quit();
         }
     }
 
-    public  static void sendText(String text, WebElement element){
+    public static void sendText(String text, WebElement element) {
         element.clear();
         element.sendKeys(text);
     }
 
+    //..................................................................................
     public static WebDriverWait getWait() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         return wait;
@@ -69,11 +80,12 @@ public class CommonMethods extends PageInitializer {
         getWait().until(ExpectedConditions.elementToBeClickable(element));
     }
 
-    public static void click(WebElement element){
+    public static void click(WebElement element) {
         waitForClickability(element);
         element.click();
     }
 
+    //.....................................................................................
     public static void selectFromDropdown(WebElement dropDown, String visibleText) {
         Select sel = new Select(dropDown);
         sel.selectByVisibleText(visibleText);
@@ -88,28 +100,60 @@ public class CommonMethods extends PageInitializer {
         Select sel = new Select(dropDown);
         sel.selectByIndex(index);
     }
+    /** type 1 radio button DOM structure */
+//    public static void radioBtnSelection(WebElement radioBtnOptions){
+//         if(radioBtnOptions.getAttribute("type").equals("radio")){
+//            click(radioBtnOptions);
+//         }
+//    }
+
+    /** type 2 radio button DOM structure */
+//    public static void radioBtnSelection(List<WebElement> radioBtnOptions, String value){
+//        for(WebElement radioButton: radioBtnOptions){
+//            if(radioButton.getAttribute("value").equalsIgnoreCase(value)){
+//                click(radioButton);
+//                break;
+//            }
+//        }
+//    }
+
+    /**
+     * type 3 radio button DOM structure
+     * While ./following-sibling::label selects the label element that is a following sibling of the current element,
+     * ./preceding-sibling::label selects the label element that is a preceding sibling of the current element.
+     */
+    public static void selectRadioButtonByValue(String value, List<WebElement> radioButtons) {
+        for (WebElement radioButton : radioButtons) {
+            WebElement labelElement = radioButton.findElement(By.xpath("./following-sibling::label"));
+            if (labelElement.getText().equalsIgnoreCase(value)) {
+                click(radioButton);
+                break;
+            }
+        }
+    }
 
 
     // to take screen-shots and store
-    public static byte[] takeScreenshot(String fileName){
+    // public static void takeScreenshot(String fileName){ // Return type is changed to byte of arrays so then we can
+    public static byte[] takeScreenshot(String fileName) {  // attached 2report & send it.
         TakesScreenshot ts = (TakesScreenshot) driver;
+        // to create the image
         //we write this line because cucumber accepts array of byte for screenshot
-        byte[] picBytes = ts.getScreenshotAs(OutputType.BYTES);
-        //to store the files
-        File screenShot = ts.getScreenshotAs(OutputType.FILE);
+        byte[] picBytes = ts.getScreenshotAs(OutputType.BYTES);  //=> then changed into bytes format
+        //to generate and store the files
+        File screenShot = ts.getScreenshotAs(OutputType.FILE);   //=> first get the image in the file format than ^
         //in case if it doesn't find file name or path it will throw an exception
-
-        try{
+        try {
             FileUtils.copyFile(screenShot,
-                    new File(Constants.SCREENSHOT_FILEPATH + fileName+" "
-                            +getTimeStamp("yyyy-MM-dd-HH-mm-ss")+".png"));
-        }catch (IOException e){
+                    new File(Constants.SCREENSHOT_FILEPATH + fileName + " "
+                            + getTimeStamp("yyyy-MM-dd-HH-mm-ss") + ".png"));
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return picBytes;
     }
 
-    public static String getTimeStamp(String pattern){
+    public static String getTimeStamp(String pattern) {
         //it returns the current date and time in java
         Date date = new Date();
         //this function sdf used to format the date as per the pattern we are passing

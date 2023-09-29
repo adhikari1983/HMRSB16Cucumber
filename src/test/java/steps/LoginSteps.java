@@ -5,57 +5,69 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.log4j.xml.DOMConfigurator;
 import org.junit.Assert;
-import org.w3c.dom.DOMConfiguration;
 import utils.CommonMethods;
 import utils.ConfigReader;
 import utils.Log;
 
 public class LoginSteps extends CommonMethods {
+        // public WebDriver driver;
 
-    @Given("user is navigated to HRMS application")
-    public void user_is_navigated_to_hrms_application() {
-        //to lunch Chrome browser
-        /*driver = new ChromeDriver();
+    @Given("user is navigated to HRMS application")       // here this steps method looks active with the colors but
+    public void user_is_navigated_to_hrms_application() { // the link is broken w/Feature file Scenario step coz
+        //to lunch Chrome browser                         // the corresponding step of the scenario is commented out
+        /*
+        driver = new ChromeDriver();
         driver.get("http://hrm.syntaxtechs.net/humanresources/symfony/web/index.php/auth/login");
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));*/
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        */                                           // on the feature file & have moved this step in the Hooks
         openBrowserAndNavigateToURL();
     }
 
     @When("user enters valid admin username and password")
     public void user_enters_valid_admin_username_and_password() {
-        //entering the credentials
-        //WebElement usernameField = driver.findElement(By.xpath("//input[@name='txtUsername']"));
-        //WebElement passwordFiled = driver.findElement(By.xpath("//input[@name='txtPassword']"));
-        /** 1st approach -> with the web element*/
-        //usernameField.sendKeys(ConfigReader.getPropertyValue("username"));
-        //passwordFiled.sendKeys(ConfigReader.getPropertyValue("password"));
+        // entering the credentials
+        /*
+        **************** 1st approach -> with selenium webDriver command ****************
+        WebElement usernameField = driver.findElement(By.xpath("//input[@name='txtUsername']"));
+        WebElement passwordFiled = driver.findElement(By.xpath("//input[@name='txtPassword']"));
 
-        /** 2nd approach -> using common method sendText */
-        //sendText(ConfigReader.getPropertyValue("username"), usernameField);
-        //sendText(ConfigReader.getPropertyValue("password"), passwordFiled);
+        ***************** 2nd approach -> with the web element ****************
+        usernameField.sendKeys(ConfigReader.getPropertyValue("username"));
+        passwordFiled.sendKeys(ConfigReader.getPropertyValue("password"));
 
-        /** final framework approach -> using object   */
-        //creating the object of the class to access all the web element from it
-        // LoginPage loginPage = new LoginPage();
+        ****************  3rd approach -> using common method sendText ****************
+        sendText(ConfigReader.getPropertyValue("username"), usernameField);
+        sendText(ConfigReader.getPropertyValue("password"), passwordFiled);
 
+        ****************  final framework approach -> using object w/o POM design Pattern ****************
+        creating the object of the class to access all the web element from it
+        LoginPage loginPage = new LoginPage();
+        */
         DOMConfigurator.configure("log4j.xml");
-        Log.startTestCase("My batch 16 test case starts here");
+        Log.startTestCase("................. My batch 16 test case starts here .......................");
         sendText(ConfigReader.getPropertyValue("username"), loginPage.usernameField);
-        Log.info("My username has been entered");
+        Log.info("................. My username has been entered ................. ");
         sendText(ConfigReader.getPropertyValue("password"), loginPage.passwordField);
-        Log.info("My password has been entered");
+        Log.info("................. My password has been entered ................. ");
     }
 
     @When("user clicks on login button")
     public void user_clicks_on_login_button() {
         //logIn btn
-        //WebElement loginButton = driver.findElement(By.xpath("//input[contains(@id, 'btn')]"));
-        // loginButton.click();
+        /*
+        **************** 1st approach -> with selenium webDriver command ****************
+        WebElement loginButton = driver.findElement(By.xpath("//input[contains(@id, 'btn')]"));
 
-        // click(loginButton);
+        ***************** 2nd approach -> with the web element ****************
+        loginButton.click();
 
-        // LoginPage loginPage = new LoginPage();
+        ****************  3rd approach -> using common method click ****************
+        click(loginButton);
+
+        ****************  final framework approach -> using object w/o POM design Pattern ****************
+        LoginPage loginPage = new LoginPage();
+        */
         click(loginPage.loginButton);
 
     }
@@ -69,16 +81,19 @@ public class LoginSteps extends CommonMethods {
 
     @When("user enters ess username and password")
     public void user_enters_ess_username_and_password() {
-        //WebElement usernameField = driver.findElement(By.xpath("//input[@name='txtUsername']"));
-        //WebElement password = driver.findElement(By.xpath("//input[@name='txtPassword']"));
         //logged in via normal employee
-        //usernameField.sendKeys("dalima123");
-        //passwordField.sendKeys("Hum@nhrm123")
+        /*
+         WebElement usernameField = driver.findElement(By.xpath("//input[@name='txtUsername']"));
+         WebElement password = driver.findElement(By.xpath("//input[@name='txtPassword']"));
 
-        // sendText(ConfigReader.getPropertyValue("username"), usernameField);
-        // sendText(ConfigReader.getPropertyValue("password"), passwordField);
+         usernameField.sendKeys("dalima123");
+         passwordField.sendKeys("Hum@nhrm123")
 
-        // LoginPage loginPage = new LoginPage();
+         sendText(ConfigReader.getPropertyValue("username"), usernameField);
+         sendText(ConfigReader.getPropertyValue("password"), passwordField);
+
+         LoginPage loginPage = new LoginPage();
+         */
         sendText("dalima123", loginPage.usernameField);
         sendText("Hum@nhrm123", loginPage.passwordField);
        // System.out.println(10/0);
@@ -86,15 +101,19 @@ public class LoginSteps extends CommonMethods {
 
     @When("user enters invalid admin username and password")
     public void user_enters_invalid_admin_username_and_password() {
-        //WebElement usernameField = driver.findElement(By.xpath("//input[@name='txtUsername']"));
-        //WebElement passwordField = driver.findElement(By.xpath("//input[@name='txtPassword']"));
-        //usernameField.sendKeys("admin123");
-        //passwordField.sendKeys("Hum@nhrm123");
+        //logged in via invalid employee
+        /*
+        WebElement usernameField = driver.findElement(By.xpath("//input[@name='txtUsername']"));
+        WebElement passwordField = driver.findElement(By.xpath("//input[@name='txtPassword']"));
 
-        //sendText("admin123", usernameField);
-        //sendText("Hum@nhrm123", passwordField)
+        usernameField.sendKeys("admin123");
+        passwordField.sendKeys("Hum@nhrm123");
 
-        // LoginPage loginPage = new LoginPage();
+        sendText("admin123", usernameField);
+        sendText("Hum@nhrm123", passwordField);
+
+        LoginPage loginPage = new LoginPage();
+        */
         sendText("admin123", loginPage.usernameField);
         sendText("Hum#n", loginPage.passwordField);
 
@@ -111,11 +130,26 @@ public class LoginSteps extends CommonMethods {
         sendText(username, loginPage.usernameField);
         sendText(password, loginPage.passwordField);
         click(loginPage.loginButton);
-        //fetching the error message from the web element
+        //fetching the error message from the web element from UI just like coming from DataBase
         String errorMessageActual = loginPage.errorMessageField.getText();
-        //errorMessageExpected -> error message coming from feature file so then, which we can compare
+        //errorMessageExpected -> error message coming from feature file as an argument so then, which we can compare
         //message:"values does not match" -> optional
         Assert.assertEquals("values does not match", errorMessageExpected, errorMessageActual);
+        //Assert.assertEquals                                 (long expected ,            long actual);
 
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

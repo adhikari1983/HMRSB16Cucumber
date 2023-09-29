@@ -4,10 +4,10 @@ Feature: Login related scenarios
    # Given user is navigated to HRMS application               -> now this step is implemented by Hooks
 
   # these tags ->@sprint14 @regression @smoke @newTestCase @newFeature needs to maintain on tag to run
-  @sprint1 @regression @smoke @newTestCase @newFeature @login
+  @sprint1 @regression @smoke @newTestCase @newFeature @validLogin
   Scenario: Valid admin login
     # don't add anything in the step after creating the step definitions
-    # Given user is navigated to HRMS application
+    Given user is navigated to HRMS application
     When user enters valid admin username and password
     And user clicks on login button
     Then user is successfully logged in the application
@@ -20,7 +20,7 @@ Feature: Login related scenarios
     And user clicks on login button
     Then user is successfully logged in the application
 
-  @sprint1   @invalid
+  @sprint1   @invalidLogin
   Scenario: invalid admin login
     # Given user is navigated to HRMS application
     When user enters invalid admin username and password

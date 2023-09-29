@@ -13,8 +13,8 @@ public class Hooks extends CommonMethods {
     }
 
     @After
-    //Scenario scenario -> holds the complete info of the test execution
-    public void end(Scenario scenario){
+    //Scenario scenario -> holds the complete info of the test execution e.g. like Scenario id/name/steps
+    public void end(Scenario scenario){                  //also, responsible to attach the image of report with it,
         //we need this variable because my ss method returns array of byte
         byte[] pic;
         //here we are going to capture the screenshot and attaching it to the report
@@ -25,6 +25,6 @@ public class Hooks extends CommonMethods {
         }
         //attach this screenshot in the report
         scenario.attach(pic,"image/png",scenario.getName());
-        closeBrowser();
+        //closeBrowser();
     }
 }

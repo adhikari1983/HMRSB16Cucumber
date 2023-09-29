@@ -15,6 +15,9 @@ public class EmployeeSearchPage extends CommonMethods {
     @FindBy(id="searchBtn")
     public WebElement searchButton;
 
+    @FindBy(xpath = "//*[@id=\"resultTable\"]/tbody/tr[1]/td[2]/a")
+    public WebElement searchResultById;
+
     public EmployeeSearchPage(){
         PageFactory.initElements(driver, this);
     }

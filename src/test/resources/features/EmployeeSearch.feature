@@ -14,7 +14,7 @@ Feature: Search an employee
     And user clicks on search button
     Then user is able to see employee information
 
-  @regression @smoke @sprint2 @background
+  @regression @smoke @sprint2 @searchByName
   Scenario: Search employee by name
     And user enters valid employee name in name text box
     And user clicks on search button

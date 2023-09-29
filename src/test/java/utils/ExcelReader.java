@@ -14,31 +14,31 @@ import java.util.Map;
 public class ExcelReader {
     public static List<Map<String, String>> read(String sheetName, String path) {
         FileInputStream fileInputStream = null;
+        // we are storing multiple sets of map as a list extracted from Excel sheet
         List<Map<String,String>> excelData = new ArrayList<>();
         try {
             fileInputStream = new FileInputStream(path);
             // that special call which knows how to read the data from excel files
             XSSFWorkbook xssfWorkbook = new XSSFWorkbook(fileInputStream);
             Sheet sheet = xssfWorkbook.getSheet(sheetName);
-
-            // headerRow row is the header keys that stays same -> that's why it is outside the loop
-            //                             values that changes  -> that's why it is inside the loop
-            //this rows is just for keys
+            /* headerRow the 1st row, these are the header keys that stays same -> that's why it is outside the loop
+               Rest of the rows with values that changes                        -> that's why it is inside the loop
+               @@this rows is just for header keys, & we keep it on 0th row, coz it is not changing at all*/
             Row headerRow = sheet.getRow(0);
-            //for row, we take 1 index because 0 is already used for headers
+            //for rows, it starts from 1 index because 0 is already used for headers
             for (int rows = 1; rows < sheet.getPhysicalNumberOfRows(); rows++) {
-                //this row is for values
+                //@@this row is just for values
                 Row row = sheet.getRow(rows);
-
-                //L27 + L30 key & value concept demands -> Map<String, String> rowMap = new LinkedHashMap<>();
+                //L27 + L31 key & value concept demands -> Map<String, String> rowMap = new LinkedHashMap<>();
                 Map<String, String> rowMap = new LinkedHashMap<>();
-                //here, we  are taking all the columns
+                //here, we  are taking all the columns starting from 0th index, unlike the headerRow
                 for (int col = 0; col < row.getPhysicalNumberOfCells(); col++) {
                     String key = headerRow.getCell(col).toString();
                     String value = row.getCell(col).toString();
+    //rowMap => is used to temporarily store the values for each row before adding that map to the excelData list.
                     rowMap.put(key, value);
                 }
-                excelData.add(rowMap);
+                excelData.add(rowMap);  /** adds the map in the list one by one using for loop*/
             }
 
         } catch (IOException e) {
@@ -52,6 +52,6 @@ public class ExcelReader {
                 e.printStackTrace();
             }
         }
-        return excelData;
+        return excelData;          /** and returns all the maps as in a single Excel sheet as list of maps*/
     }
 }
