@@ -1,0 +1,10 @@
+https://github.com/SyntaxTechnologies/CucumberBatch14
+e.g. it has a lot of utility methods in common methods
+
+
+https://github.com/SyntaxTechnologies/CucumberBatch15/blob/master/src/test/java/Utils/CommonMethods.java
+something headless info
+
+
+IN GENERAL
+https://github.com/SyntaxTechnologies
