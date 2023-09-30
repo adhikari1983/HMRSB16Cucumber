@@ -10,7 +10,6 @@ import org.junit.runner.RunWith;
         features = "@target/failed.txt",
         plugin = {"pretty"}
 )
-
 public class FailedRunner {
 
 }
