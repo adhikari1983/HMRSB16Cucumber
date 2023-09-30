@@ -41,6 +41,5 @@ import org.junit.runner.RunWith;
 public class RunnerClass {
 }
 /**
- "html:target/cucumber.html" => this is more than enough, Basically it's been used everywhere
- please don't talk about the json report in the interview
+ "html:target/cucumber.html"  Basically it's been used everywhere
  */
