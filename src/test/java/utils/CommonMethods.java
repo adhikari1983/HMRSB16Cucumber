@@ -1,7 +1,8 @@
 package utils;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.log4j.xml.DOMConfigurator;
+import org.apache.logging.log4j.core.config.Configurator;
+//import org.apache.log4j.xml.DOMConfigurator;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -49,7 +50,8 @@ public class CommonMethods extends PageInitializer {
         initializePageObjects();// This will initialize all the pages we have in our Page
         //PageInitializer class along with the launching of application
         // To configure the File and pattern it has
-        DOMConfigurator.configure("log4j.xml");
+       // DOMConfigurator.configure("log4j2.xml");
+        Configurator.initialize(null, "log4j2.xml"); // Configure Log4j 2.x
         Log.startTestCase("This is the beginning of my Test case");
         Log.info("My test case is executing right now");
         Log.warning("My test case might have some trivial issues");

@@ -3,7 +3,8 @@ package steps;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.apache.log4j.xml.DOMConfigurator;
+//import org.apache.log4j.xml.DOMConfigurator;
+import org.apache.logging.log4j.core.config.Configurator;
 import org.junit.Assert;
 import utils.CommonMethods;
 import utils.ConfigReader;
@@ -44,7 +45,8 @@ public class LoginSteps extends CommonMethods {
         creating the object of the class to access all the web element from it
         LoginPage loginPage = new LoginPage();
         */
-        DOMConfigurator.configure("log4j.xml");
+       // DOMConfigurator.configure("log4j2.xml");
+        Configurator.initialize(null, "log4j2.xml"); // Configure Log4j 2.x
         Log.startTestCase("................. My batch 16 test case starts here .......................");
         sendText(ConfigReader.getPropertyValue("username"), loginPage.usernameField);
         Log.info("................. My username has been entered ................. ");

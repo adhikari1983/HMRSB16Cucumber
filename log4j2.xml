@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <Appenders>
+        <File name="FileAppender" fileName="logfile.log">
+            <PatternLayout pattern="%d %-5p [%c{1}] %m %n" />
+        </File>
+    </Appenders>
+    <Loggers>
+        <Root level="INFO">
+            <AppenderRef ref="FileAppender" />
+        </Root>
+    </Loggers>
+</Configuration>
+
+
+<!-- rename your configuration file from log4j.xml to log4j2.xml to match the naming convention for
+     Log4j 2.x configuration files. Once you've renamed the file, make sure it contains the appropriate
+     Log4j 2.x configuration for your project's logging needs.
+-->
+        <!-- <!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+        <log4j:configuration xmlns:log4j="https://jakarta.apache.org/log4j/" debug="false">
+
+            <appender name="fileAppender" class="org.apache.log4j.FileAppender">
+
+                <param name="Threshold" value="INFO" />
+
+                <param name="File" value="logfile.log"/>
+
+                <layout class="org.apache.log4j.PatternLayout">
+                    <param name="ConversionPattern" value="%d %-5p [%c{1}] %m %n" />
+                </layout>
+            </appender>
+
+            <root>
+
+                <level value="INFO"/>
+
+                <appender-ref ref="fileAppender"/>
+
+            </root>
+
+        </log4j:configuration>
+        -->

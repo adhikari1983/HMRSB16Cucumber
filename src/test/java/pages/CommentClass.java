@@ -9,7 +9,7 @@ public class CommentClass {
         // Assert.assertEquals("Required",errorMessageExpected, errorMessageActual);
 
         WebElement inputBoxErrorMsg = driver.findElement(By.xpath("//span[@for='firstName']/following::span[@for='lastName']"));
-        DOMConfigurator.configure("log4j.xml");
+        DOMConfigurator.configure("log4j2.xml");
         Log.startTestCase("Error message is : " + inputBoxErrorMs![](C:/Users/adhik/AppData/Local/Temp/IMG_8632.png)g.getText() );
         boolean isDisplayed = inputBoxErrorMsg.isDisplayed();
         Assert.assertTrue("Required", isDisplayed);
