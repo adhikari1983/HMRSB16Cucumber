@@ -9,7 +9,6 @@
     <!-- name of the project -->
     <artifactId>HRMSB16</artifactId>
     <version>1.0-SNAPSHOT</version>
-
     <!--    Java version -->
     <properties>
         <maven.compiler.source>16</maven.compiler.source>
