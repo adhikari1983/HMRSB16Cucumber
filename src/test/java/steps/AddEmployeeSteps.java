@@ -27,9 +27,7 @@ public class AddEmployeeSteps extends CommonMethods {
         //pimOption.click();
 
         // click(pimOption);
-
         click(dashboardPage.pimOption);
-
     }
 
     @When("user clicks on add employee button")
@@ -38,7 +36,6 @@ public class AddEmployeeSteps extends CommonMethods {
         // addEmployeeButton.click();
 
         // click(addEmployeeButton);
-
         click(dashboardPage.addEmployeeButton);
     }
 
@@ -48,14 +45,12 @@ public class AddEmployeeSteps extends CommonMethods {
         // firstNameTextField.sendKeys("aendro");
 
         // sendText("aendro", firstNameTextField);
-
         sendText("aendro", addEmployeePage.firstNameField);
 
         // WebElement lastNameTextField = driver.findElement(By.id("lastName"));
         //lastNameTextField.sendKeys("farewell");
 
         // sendText("lastname", lastNameTextField);
-
         sendText("farewell", addEmployeePage.lastNameField);
     }
 
@@ -65,7 +60,6 @@ public class AddEmployeeSteps extends CommonMethods {
         //saveButton.click();
 
         // click(saveButton);
-
         click(addEmployeePage.saveButton);
     }
 
@@ -82,6 +76,15 @@ public class AddEmployeeSteps extends CommonMethods {
         sendText(firstName, addEmployeePage.firstNameField);
         sendText(middleName, addEmployeePage.middleNameField);
         sendText(lastName, addEmployeePage.lastNameField);
+        /** for data validation with SQL queries
+         for this feature
+         @DB
+         Scenario: Adding one employee from feature file
+         When user enters "Kiran" and "Gorkhali" and "Adhikari"
+         And user clicks on save button
+         Then employee added successfully
+         Then verify employee is stored in database
+         */
         empId = addEmployeePage.employeeIdField.getAttribute("value");
     }
 
@@ -121,6 +124,7 @@ public class AddEmployeeSteps extends CommonMethods {
             sendText(middleNameValue, addEmployeePage.middleNameField);
             sendText(lastNameValue, addEmployeePage.lastNameField);
             click(addEmployeePage.saveButton);
+
             //after adding one employee we will add another employee
             //for this we are clicking add employee btn in the loop it-self
             click(dashboardPage.addEmployeeButton);

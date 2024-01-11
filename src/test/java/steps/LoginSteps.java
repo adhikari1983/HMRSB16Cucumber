@@ -134,11 +134,14 @@ public class LoginSteps extends CommonMethods {
         click(loginPage.loginButton);
         //fetching the error message from the web element from UI just like coming from DataBase
         String errorMessageActual = loginPage.errorMessageField.getText();
+
         //errorMessageExpected -> error message coming from feature file as an argument so then, which we can compare
+        //errorMessageActual   -> error message from the web element from UI
         //message:"values does not match" -> optional
         Assert.assertEquals("values does not match", errorMessageExpected, errorMessageActual);
-        //Assert.assertEquals                                 (long expected ,            long actual);
-
+        //Assert.assertEquals                    (long expected ,            long actual);
+        //                    (error message after executing the test ,  error message from the web element from UI)
+        //
     }
 }
 

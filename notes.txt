@@ -1,9 +1,9 @@
 BDD -> Behavioural driven development -> an approach  to software development -> The development is driven
 according to the behavior.
                     behaviour means functionalities
-->whatever the functionalities is saying, or we have seen; you're going to development the application according
+->whatever the functionalities is saying, or we have seen; you're going to develop the application according
 to the behavior.
-->whatever the business cases saying we are writing the same step declaration/definitions
+->whatever the business cases are saying we are writing the same step declaration/definitions
 
 TDD -> Test-Driven Development -> is an approach to software development. It is a development technique where tests
 are written before the actual code is implemented. This approach emphasizes creating automated tests that define the
@@ -14,7 +14,7 @@ TestNG -> is a tool -> allows to-perform DDT -> Data driven testing
 
 BDD, MDD, ATDD, TDD, DDT  -> 5-diff approach companies follow                M- module, AT- absolute test
 
-=> currently working on Cucumber(tool & framework) -> is hybrid in nature -> supports BDD + TDD
+=> currently working on Cucumber(tool & framework) -> is hybrid in nature -> supports BDD + DDT
 
 ..............FRAMEWORK IS ALL ABOUT THE ORGANIZING THE STRUCTURE..................
 deleted the main method -> to clear the unnecessary stuffs
@@ -116,9 +116,9 @@ recap -
         invalid login
 
     Background - when the flow of all the scenarios is same in one feature file,
-    it will execute before all the scenarios.
-    it will be limited to one feature file.
-    for every feature file, there will be different >Background
+    it is executed before all the scenarios.
+    it is limited to one feature file.
+    for every feature file, there will be different > Background
 
 config.prop - to keep all the configurations related parameters in it
 config reader class - read the data from .properties files
@@ -193,6 +193,7 @@ it should be easily understandable
 it should be expandable
 it should be easy to maintain
 it should be generic
+it should keep everybody on the same page with the company's standards & quality guidelines
 
 we created loginPage, employeeSearchPage, dashboardPage, addEmployeePage
 
@@ -346,9 +347,10 @@ mvn clean test will execute your code from cmd
 
 mvn test -Dcucumber.filter.tags="@invalid" we use-to override tags
 
-mvn test -Dcucumber.options="--tags @invalid"
+            mvn test -Dcucumber.options="--tags @invalid"
 
-Both mvn test -Dcucumber.filter.tags="@invalid" and mvn test -Dcucumber.options="--tags @invalid"
+Both        mvn test -Dcucumber.filter.tags="@invalid"
+and         mvn test -Dcucumber.options="--tags @invalid"
 achieve the same result of running scenarios with the @invalid tag, but they use slightly different
 ways of specifying the tag filter. The cucumber.options approach provides more flexibility in
 specifying additional Cucumber command-line options if needed

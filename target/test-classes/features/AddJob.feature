@@ -1,0 +1,18 @@
+Feature: Adding new jobs in HRMS
+
+  Background:
+    When user enters valid admin username and password
+    And user clicks on login button
+    Then user is successfully logged in the application
+
+  @addJob
+  Scenario: User adds a new job
+    * user clicks on the admin button
+    * user click on the job
+    * user Click on Job Title
+    * user clicks on the add button
+    * user enters job "Chef001" title
+    * user enters job description "Royal Chef"
+    * user enters job note "For Royal family"
+    * user clicks on the save button here
+    * verify data is stored properly in database

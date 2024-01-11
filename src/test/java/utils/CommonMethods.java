@@ -5,6 +5,7 @@ import org.apache.logging.log4j.core.config.Configurator;
 //import org.apache.log4j.xml.DOMConfigurator;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -35,7 +36,14 @@ public class CommonMethods extends PageInitializer {
           read the value of the property "url" from the config file  */
         switch (ConfigReader.getPropertyValue("browser")) {// switch (browser){  initially was like this, but we made it generic
             case "chrome":
-                driver = new ChromeDriver();
+// these next 4/5 lines added to execute the test scripts on the Jenkins server w/o UI w/remote origin
+                ChromeOptions chromeOptions = new ChromeOptions();
+               // chromeOptions.setHeadless(true); -> deprecated after selenium 4.11.0
+                chromeOptions.addArguments("--no-sandbox");
+                chromeOptions.addArguments("--remote-allow--origins=*");
+                chromeOptions.addArguments("--headless=new");
+
+                driver = new ChromeDriver(chromeOptions);
                 break;
 
             case "firefox":

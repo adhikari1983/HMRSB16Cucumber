@@ -14,15 +14,15 @@ import static org.hamcrest.Matchers.equalTo;
 //@FixMethodOrder(MethodSorters.NAME_ASCENDING) according to alphabetical name ascending order
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class HardCodedExamples {
-    // baseURI = baseURL  + endPoint
-    // given   - preparation
-    // when    - hitting the endPoint
-    // on this context => base URI = base URL here
-    // then    - assertion/verification
+     /* baseURI = baseURL  + endPoint
+     given   - preparation
+     when    - hitting the endPoint
+     on this context => base URI = base URL here
+     then    - assertion/verification
 
-    // with this java is unable to find the url
-    //String baseURI = "http://hrm.syntaxtechs.net/syntaxapi/api";
-    //assigning the URL to the static variable, and then assigning that static variable to the instance variable
+     with this java is unable to find the url
+    String baseURI = "http://hrm.syntaxtechs.net/syntaxapi/api";
+    assigning the URL to the static variable, and then assigning that static variable to the instance variable */
     /**
       baseURI is in gray color, means it looks like it is never used but this is how it works in "Rest Assured"
       by defining it as an instance here => its becomes the Central-junction, it will direct to the url by adding below
@@ -31,7 +31,7 @@ public class HardCodedExamples {
       functionality of Rest Assured.
       => baseURI -> gray, but  RestAssured.baseURI -> in Not-gray color that means internally the link is active.
      */
-    String baseURI = RestAssured.baseURI = "http://hrm.syntaxtechs.net/syntaxapi/api"; //further talk with CHATGPT
+    String baseURI = RestAssured.baseURI = "http://hrm.syntaxtechs.net/syntaxapi/api"; //further, talk with CHATGPT
     // value of token should be same as postman
     String token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2OTA5MzI0NjcsImlzcyI6ImxvY2FsaG9zdCIsImV4cCI6MTY5MDk3NTY2NywidXNlcklkIjoiNTcyOCJ9.ft7JyvJIPBl3LYuJ50C5WWLL-PmlVKtKXxeFw_syLAs";
     static String employee_id_fromPostCall;
@@ -54,7 +54,7 @@ public class HardCodedExamples {
                         "  \"emp_status\": \"Working\",\n" +
                         "  \"emp_job_title\": \"SDET\"\n" +
                         "}");
-        // 2. hitting the endPoint
+        // 2. hitting the endPoint -> we get the response as =>  Response response
         Response response = request.when().post("/createEmployee.php");
 
         // 3. verifying the response
@@ -67,8 +67,8 @@ public class HardCodedExamples {
         response.prettyPrint();
 
         //verify all the values and headers from response
-        response.then().assertThat().body("Employee.emp_firstname", equalTo("Priya III"));
-        response.then().assertThat().body("Employee.emp_middle_name", equalTo("Despandya"));
+        response.then().assertThat().body("Employee.emp_firstname", equalTo("Kripa"));
+        response.then().assertThat().body("Employee.emp_middle_name", equalTo("Adhikari"));
         response.then().assertThat().body("Message", equalTo("Employee Created"));
         response.then().assertThat().header("X-Powered-By", equalTo("PHP/7.2.18"));
 

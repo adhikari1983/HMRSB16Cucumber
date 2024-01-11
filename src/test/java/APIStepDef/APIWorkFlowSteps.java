@@ -105,6 +105,7 @@ public class APIWorkFlowSteps {
                         firstName, lastName, middleName, gender, dob, status, jobTitle));
     }
 
+    // ***********************************************************************************************************************
     // ------------------------- GET CALL => @api Scenario: Get the created employee------------------------------------------
     @Given("a request is prepared for retrieving an employee")
     public void a_request_is_prepared_for_retrieving_an_employee() {
@@ -151,7 +152,7 @@ public class APIWorkFlowSteps {
         Map<String, String> actualData = response.body().jsonPath().get(employeeObject);
         /**
          {
-         "Message": "Employee Created",                              parameter           = argument
+         "Message": "Employee Created",                                    parameter     = argument
          "Employee": { -------------------------------------------->.get(employeeObject) = Employee
          "employee_id": "94677A",
          "emp_firstname": "Ganesh",
@@ -178,6 +179,7 @@ public class APIWorkFlowSteps {
         }
     }
 
+    // ***********************************************************************************************************************
     // ------------------------- PATCH CALL => @partialUpdate Scenario: Get the created employee------------------------------------------
     @Given("the request is prepared to update the employee firstname to {string}")
     public void the_request_is_prepared_to_update_the_employee_firstname_to(String name) {

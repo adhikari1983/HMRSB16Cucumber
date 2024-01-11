@@ -12,10 +12,17 @@ public class Hooks extends CommonMethods {
         openBrowserAndNavigateToURL();
     }
 
+
+    /*
+    Scenario scenario -> holds the complete info of the test execution e.g. like Scenario id/name/steps
+    e.g. Scenario scenario -> can be  @sprint1 @employee @login
+                                       Scenario: valid ess login
+        so here scenario ->  valid ess login
+        ****** Also, responsible to attach the image of report with it to the report ******
+    */
     @After
-    //Scenario scenario -> holds the complete info of the test execution e.g. like Scenario id/name/steps
-    public void end(Scenario scenario){                  //also, responsible to attach the image of report with it,
-        //we need this variable because my ss method returns array of byte
+    public void end(Scenario scenario){
+        //we need this variable because takeScreenshot() method returns -> array of byte
         byte[] pic;
         //here we are going to capture the screenshot and attaching it to the report
         if(scenario.isFailed()) {
@@ -23,7 +30,7 @@ public class Hooks extends CommonMethods {
         }else {
             pic = takeScreenshot("passed/" + scenario.getName());
         }
-        //attach this screenshot in the report
+        // attaching this screenshot in the report
         scenario.attach(pic,"image/png",scenario.getName());
         closeBrowser();
     }
