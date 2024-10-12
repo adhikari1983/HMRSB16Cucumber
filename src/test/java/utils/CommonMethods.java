@@ -73,6 +73,7 @@ public class CommonMethods extends PageInitializer {
             Log.info("This test case is about to get completed");
             Log.endTestCase("This test case is finished");
             driver.quit();
+            driver = null; // Optional: Set driver to null to prevent reuse
         }
     }
 
@@ -155,7 +156,7 @@ public class CommonMethods extends PageInitializer {
 
     // to take screen-shots and store
     // public static void takeScreenshot(String fileName){ // Return type is changed to byte of arrays so then we can
-    /*public static byte[] takeScreenshot(String fileName) {  // attached 2report & send it.
+   /* public static byte[] takeScreenshot(String fileName) {  // attached 2report & send it.
         TakesScreenshot ts = (TakesScreenshot) driver;
         // to create the image
         //we write this line because cucumber accepts array of byte for screenshot
@@ -173,35 +174,19 @@ public class CommonMethods extends PageInitializer {
         return picBytes;
     }
 */
-
     //this method is w/gpt edition original is the above one
     public static byte[] takeScreenshot(WebDriver driver, String fileName) {
-        // Check if the driver is initialized
-        if (driver == null) {
-            System.err.println("WebDriver is not initialized. Cannot take screenshot.");
-            return null; // Or throw an exception based on your error handling strategy
-        }
-
         TakesScreenshot ts = (TakesScreenshot) driver;
-
-        // Get screenshot as bytes for reporting
         byte[] picBytes = ts.getScreenshotAs(OutputType.BYTES);
-
-        // Generate screenshot file
         File screenShot = ts.getScreenshotAs(OutputType.FILE);
         try {
-            // Ensure the directory exists
-            FileUtils.forceMkdir(new File(Constants.SCREENSHOT_FILEPATH));
-
-            // Create a unique file name with a timestamp
-            String filePath = Constants.SCREENSHOT_FILEPATH + fileName + " " + getTimeStamp("yyyy-MM-dd-HH-mm-ss") + ".png";
-            FileUtils.copyFile(screenShot, new File(filePath));
+            FileUtils.copyFile(screenShot,
+                    new File(Constants.SCREENSHOT_FILEPATH + fileName + " "
+                            + getTimeStamp("yyyy-MM-dd-HH-mm-ss") + ".png"));
         } catch (IOException e) {
-            System.err.println("Error while saving screenshot: " + e.getMessage());
             e.printStackTrace();
         }
-
-        return picBytes; // Return the screenshot in byte format
+        return picBytes;
     }
 
 

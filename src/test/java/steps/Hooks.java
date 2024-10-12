@@ -20,18 +20,37 @@ public class Hooks extends CommonMethods {
         so here scenario ->  valid ess login
         ****** Also, responsible to attach the image of report with it to the report ******
     */
-    @After
+    /*@After
     public void end(Scenario scenario){
         //we need this variable because takeScreenshot() method returns -> array of byte
         byte[] pic;
         //here we are going to capture the screenshot and attaching it to the report
         if(scenario.isFailed()) {
+           // pic = takeScreenshot("failed/" + scenario.getName());
             pic = takeScreenshot(driver,"failed/" + scenario.getName());
         }else {
+            //pic = takeScreenshot("passed/" + scenario.getName());
             pic = takeScreenshot(driver,"passed/" + scenario.getName());
         }
         // attaching this screenshot in the report
         scenario.attach(pic,"image/png",scenario.getName());
+        closeBrowser();
+    }*/
+
+    @After
+    public void end(Scenario scenario) {
+        byte[] pic = null;
+        if (driver != null) {
+            if (scenario.isFailed()) {
+                pic = takeScreenshot(driver, "failed/" + scenario.getName());
+            } else {
+                pic = takeScreenshot(driver, "passed/" + scenario.getName());
+            }
+            // Attach the screenshot to the report
+            scenario.attach(pic, "image/png", scenario.getName());
+        } else {
+            System.err.println("WebDriver was not initialized. Cannot take screenshot.");
+        }
         closeBrowser();
     }
 }
