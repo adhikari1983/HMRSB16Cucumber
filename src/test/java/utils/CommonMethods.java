@@ -40,9 +40,9 @@ public class CommonMethods extends PageInitializer {
 // these next 4/5 lines added to execute the test scripts on the Jenkins server w/o UI w/remote origin
                 ChromeOptions chromeOptions = new ChromeOptions();
                // chromeOptions.setHeadless(true); -> deprecated after selenium 4.11.0
-                chromeOptions.addArguments("--no-sandbox");
-                chromeOptions.addArguments("--remote-allow--origins=*");
-                chromeOptions.addArguments("--headless=new");
+//                chromeOptions.addArguments("--no-sandbox");
+//                chromeOptions.addArguments("--remote-allow--origins=*");
+//                chromeOptions.addArguments("--headless=new");
 
                 driver = new ChromeDriver(chromeOptions);
                 break;

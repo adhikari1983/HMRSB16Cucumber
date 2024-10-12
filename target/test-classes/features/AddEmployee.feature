@@ -1,6 +1,6 @@
 Feature: Adding employee in HRMS application
 
-  Background:
+  Background:# Given user is navigated to HRMS application   ->Background -> now this step is implemented by Hooks
     When user enters valid admin username and password
     And user clicks on login button
     Then user is successfully logged in the application
@@ -23,7 +23,7 @@ Feature: Adding employee in HRMS application
     Then employee added successfully
 
    #3 we just passed the data in Scenario Outline step of feature file as "<key>"   &  value  pair w/Example table
-  @outline                                                          #e.g "<Kiran>"  & "Kiran"
+  @outline                                                      #e.g "<firstName>"  & "Kiran"
   Scenario Outline: adding multiple employee using scenario outline
     # "<firstName>" and "<middleName>" and "<lastName>" => in angular for <> in double quotes "" passing as keys
     # |  Parbati  |       Kali        |       Poudel   |   in double quotes "" passing  as values in below Examples table
