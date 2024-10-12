@@ -40,9 +40,9 @@ public class CommonMethods extends PageInitializer {
 // these next 4/5 lines added to execute the test scripts on the Jenkins server w/o UI w/remote origin
                 ChromeOptions chromeOptions = new ChromeOptions();
                // chromeOptions.setHeadless(true); -> deprecated after selenium 4.11.0
-//                chromeOptions.addArguments("--no-sandbox");
-//                chromeOptions.addArguments("--remote-allow--origins=*");
-//                chromeOptions.addArguments("--headless=new");
+                chromeOptions.addArguments("--no-sandbox");
+                chromeOptions.addArguments("--remote-allow--origins=*");
+                chromeOptions.addArguments("--headless=new");
 
                 driver = new ChromeDriver(chromeOptions);
                 break;
@@ -143,10 +143,19 @@ public class CommonMethods extends PageInitializer {
         }
     }
 
+    public static String getTimeStamp(String pattern) {
+        //it returns the current date and time in java
+        Date date = new Date();
+        //this function sdf used to format the date as per the pattern we are passing
+        SimpleDateFormat sdf = new SimpleDateFormat(pattern);
+        //this line is going to return the formatted date
+        return sdf.format(date);
+    }
+
 
     // to take screen-shots and store
     // public static void takeScreenshot(String fileName){ // Return type is changed to byte of arrays so then we can
-    public static byte[] takeScreenshot(String fileName) {  // attached 2report & send it.
+    /*public static byte[] takeScreenshot(String fileName) {  // attached 2report & send it.
         TakesScreenshot ts = (TakesScreenshot) driver;
         // to create the image
         //we write this line because cucumber accepts array of byte for screenshot
@@ -163,15 +172,37 @@ public class CommonMethods extends PageInitializer {
         }
         return picBytes;
     }
+*/
 
-    public static String getTimeStamp(String pattern) {
-        //it returns the current date and time in java
-        Date date = new Date();
-        //this function sdf used to format the date as per the pattern we are passing
-        SimpleDateFormat sdf = new SimpleDateFormat(pattern);
-        //this line is going to return the formatted date
-        return sdf.format(date);
+    public static byte[] takeScreenshot(String fileName) {
+        // Check if the driver is initialized
+        if (driver == null) {
+            System.err.println("WebDriver is not initialized. Cannot take screenshot.");
+            return null; // Or throw an exception based on your error handling strategy
+        }
+
+        TakesScreenshot ts = (TakesScreenshot) driver;
+
+        // Get screenshot as bytes for reporting
+        byte[] picBytes = ts.getScreenshotAs(OutputType.BYTES);
+
+        // Generate screenshot file
+        File screenShot = ts.getScreenshotAs(OutputType.FILE);
+        try {
+            // Ensure the directory exists
+            FileUtils.forceMkdir(new File(Constants.SCREENSHOT_FILEPATH));
+
+            // Create a unique file name with a timestamp
+            String filePath = Constants.SCREENSHOT_FILEPATH + fileName + " " + getTimeStamp("yyyy-MM-dd-HH-mm-ss") + ".png";
+            FileUtils.copyFile(screenShot, new File(filePath));
+        } catch (IOException e) {
+            System.err.println("Error while saving screenshot: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        return picBytes; // Return the screenshot in byte format
     }
+
 
 
 }
