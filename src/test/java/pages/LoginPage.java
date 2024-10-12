@@ -24,7 +24,7 @@ public class LoginPage extends CommonMethods {
 
     //to initialize the all the elements of the page we have to call them inside constructor
     public  LoginPage(){
-        // PageFactory.initElements -> driver gets the elements of this page,  initialize all
+        // PageFactory.initElements -> driver gets the elements of this page,  initialize them all
         PageFactory.initElements(driver, this);
         //this driver will be called for the particular page:this
     }

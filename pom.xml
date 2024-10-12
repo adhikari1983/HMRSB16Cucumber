@@ -56,7 +56,7 @@
         <!--        </dependency>-->
 
 
-        <!-- to pass the file from various resource as parameter like Excel, CSV etc... -->
+        <!-- to pass the file from various resource as parameter like Excel, CSV, JSON, YAML, XML, Text file etc... -->
         <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
         <dependency>
             <groupId>org.apache.poi</groupId>
@@ -117,6 +117,22 @@
             <artifactId>json</artifactId>
             <version>20230227</version>
         </dependency>
+
+        <!-- OkHttp core dependency -->
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>4.11.0</version>
+        </dependency>
+
+        <!-- MockWebServer dependency for unit testing -->
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>mockwebserver</artifactId>
+            <version>4.11.0</version>
+            <scope>test</scope>
+        </dependency>
+
 
 
         <!-- all above dependencies   -> project level

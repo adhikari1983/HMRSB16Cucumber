@@ -24,6 +24,7 @@ public class CommonMethods extends PageInitializer {
 
     public static WebDriver driver;
 
+
     public static void openBrowserAndNavigateToURL() {
         /* reading the config.properties file
           read the property file from the given path                -> & Put it in ConfigReader

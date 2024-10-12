@@ -1,5 +1,5 @@
 For every screen/page in the application, we create a separate class for it and keep all the
-locators/WebElements of this page in this class and we create a key of locators which we will
+locators/WebElements of this page in this class, and we create a key of locators which we will
 pass in every step
 
 page factory concept from selenium
@@ -8,7 +8,7 @@ page initialization concept from java
 
 The Page Object Model (POM) is a design pattern used in software development for creating automation tests.
 It is primarily employed in test automation frameworks, such as Selenium, to enhance the maintainability
-and re-usability of test scripts.
+Scalability and re-usability of test scripts.
 
 The main idea behind the Page Object Model is to represent each web page or user interface (UI) element as a
 separate class, referred to as a "Page Object." These Page Objects encapsulate the various functionalities

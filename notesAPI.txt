@@ -1,6 +1,6 @@
-_________________ API ____________
+_________________ apis.API ____________
 
-API - application programming interface
+apis.API - application programming interface
 
 In restaurant -
 client/customer - who gives the order - request
@@ -54,13 +54,13 @@ reasons - why we need it and examples as well
 
 facebook, instagram, amazon, ebay etc
 
-Need of API?
+Need of apis.API?
 
 front end - html, css, angular, JS
 back end - java, python
 middleware - c++, JS
 
-1. to make systems developed in different languages communicate, we need API.
+1. to make systems developed in different languages communicate, we need apis.API.
 2. For security purposes to maintain the security,
    1 api is responsible for one piece of information which is easy to maintain and to transfer
 
@@ -75,7 +75,7 @@ front end - CRUD
 manual
 automate
 
-API testing -
+apis.API testing -
 manual - Postman
 automation - RestAssured
 
@@ -83,19 +83,19 @@ non UI testing -
 
 swagger document - this document will give you the information of api and what to test over there
 
-API's which are hosted over the internet are called Webservices.
-by default all Webservices are API's;
+apis.API's which are hosted over the internet are called Webservices.
+by default all Webservices are apis.API's;
                                     But all APIs are not Webservices.
 
 
 DNS - domain name server
 
-why we need to test API?
+why we need to test apis.API?
 
 mumbai to NYC - 321
 california - greece - 321
 
-to identify the glitch in API, we need to test them
+to identify the glitch in apis.API, we need to test them
 
 Webservices testing -
 
@@ -117,7 +117,7 @@ uniform resource identifier - in order to send the request we need complete URI
 
 client - request
 server - who will give the response to the request
-API
+apis.API
 
 Class 2 -
 
@@ -143,12 +143,12 @@ n tier architecture
 -- extended version of 3 tier arch.
 
 
-webservices - API's which are hosted over the internet
+webservices - apis.API's which are hosted over the internet
 
 REST
 SOAP
 
-the document which we need to work with during API testing is swagger document.
+the document which we need to work with during apis.API testing is swagger document.
 
 Base URI - uniform resource identifier
 
@@ -206,7 +206,7 @@ body/payload -
 header -
 content-type - application/json
 
-in API testing, the first thing we observe in response is status code.
+in apis.API testing, the first thing we observe in response is status code.
 
 if we have post method -
 base uri
@@ -217,20 +217,20 @@ headers
 response status code - 201
 
 
-There are 2 types of API's.
-public API - everyone can use
-private API - only the registered users can use
+There are 2 types of apis.API's.
+public apis.API - everyone can use
+private apis.API - only the registered users can use
 
-How API keeps security in private API.
+How apis.API keeps security in private apis.API.
 
 It is the process of -
 Authentication and Authorization
 
 
 
-API -
+apis.API -
 	web services
-	normal API
+	normal apis.API
 
 Webservices
 	REST
@@ -238,11 +238,11 @@ Webservices
 
 REST
 	public
-	private API
+	private apis.API
 
 authentication and authorization
 
-private API
+private apis.API
 
 when the state of the server memory is set to true, we call it stateful application
 when you enter your credentials first time, server checks with DB and saved it in the memory
@@ -285,7 +285,7 @@ JWT has 3 parts in it -
 
 so far, we have created an admin user and we have generated token as well to perform crud operations
 
-Create an employee in HRMS db using API
+Create an employee in HRMS db using apis.API
 
 BaseURI = hrm.syntaxtechs.net/syntaxapi/api/createEmployee.php
 
@@ -337,7 +337,7 @@ Grants
 CRUD
 admin user -
 
-swagger - in this document, we can find all the details of API.
+swagger - in this document, we can find all the details of apis.API.
 
 in postman -
 we created collection -
@@ -374,7 +374,7 @@ authorization -
 bearer token - token value
 
 
-to identify the glitch is in API or DB
+to identify the glitch is in apis.API or DB
 we have to perform get operation after every request
 
 
@@ -501,7 +501,7 @@ deleted employee
 
 
 
-if we have to test the API's in multiple environments such as QA/Test, prod, staging
+if we have to test the apis.API's in multiple environments such as QA/Test, prod, staging
 
 providing environment variables -
 {{variableName}} - this is the syntax to be passed in the baseURI for the environment
@@ -517,9 +517,9 @@ select no auth in authroization tab and save the request.
 *IF YOU DON"T DO IT, YOU WILL ALWAYS CRY*
 
 
-postman comes with inbuilt javascript API library
+postman comes with inbuilt javascript apis.API library
 
-pm is the object of postman which allows us to use different methods available in this API
+pm is the object of postman which allows us to use different methods available in this apis.API
 
 pm.test
 pm.request
@@ -536,14 +536,14 @@ time of response
 body - any message, any key and any value
 response -
 
--------------------------------API Automation------------------------------
+-------------------------------apis.API Automation------------------------------
 
 REST Assured -
 
 REST web service, the rest web service allows data to be sent in JSON format.
 
 Rest Assured is DSL (domain specific language)
-it is a java based library used to automate REST API's.
+it is a java based library used to automate REST apis.API's.
 
 Rest assured follows BDD approach
 
@@ -557,7 +557,7 @@ rest assured - need to add (in pom.xml file, we have to add dependency)
 class 5................................................................................................................
 recap -
 
-Rest Assured - java based library used to automate API
+Rest Assured - java based library used to automate apis.API
 it is DSL which allows us to send the data in JSON format
 
 in rest assured

@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = {"steps"},
         dryRun = false,
-        tags = "@regression",  /** most of the time we play with tags & some time dryRun just 2get missing steps*/
+        tags = "@regression",  /** most of the time we play with tags & dryRun some time just 2get missing steps*/
         monochrome = true,
         plugin = {"pretty", "html:target/cucumber.html", "json:target/cucumber.json"}
 )

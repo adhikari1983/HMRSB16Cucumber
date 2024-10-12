@@ -1,12 +1,10 @@
-package APIStepDef;
+package apis.APIStepDef;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import org.apiguardian.api.API;
 import org.junit.Assert;
 import utils.APIConstants;
 import utils.APIPayloadConstants;
@@ -19,13 +17,13 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
 public class APIWorkFlowSteps {
-    //moved in the API constant
+    //moved in the apis.API constant
     //public static final String baseURI = RestAssured.baseURI = "http://hrm.syntaxtechs.net/syntaxapi/api";
     RequestSpecification request;
     Response response;
     public static String employee_id;
 
-    // ------------------------- POST CALL => @api Scenario: Creating the employee using API ------------------------------------------
+    // ------------------------- POST CALL => @api Scenario: Creating the employee using apis.API ------------------------------------------
    /* @Given("a request is prepared for creating an employee")
      public void a_request_is_prepared_for_creating_an_employee() {
         request = given().header("Content-Type", "application/json")
@@ -84,7 +82,7 @@ public class APIWorkFlowSteps {
         System.out.println(employee_id);
     }
 
-    // ------------------------- POST CALL => @json Scenario: Creating the employee using API ------------------------
+    // ------------------------- POST CALL => @json Scenario: Creating the employee using apis.API ------------------------
     // # 2. Making the POST call again with normal JSON object ...............
     @Given("a request is prepared for creating an employee using json payLoad")
     public void a_request_is_prepared_for_creating_an_employee_using_json_pay_load() {
@@ -93,7 +91,7 @@ public class APIWorkFlowSteps {
                 .body(APIPayloadConstants.createEmployeeJsonPayload());
     }
 
-    // ------------------------- POST CALL => @dynamic Scenario : Creating the employee using API ------------------------------------
+    // ------------------------- POST CALL => @dynamic Scenario : Creating the employee using apis.API ------------------------------------
     //# 3. Making the POST call again passing the data directly from feature file for dynamic scenario ...............
     @Given("a request is prepared for creating an employee with data {string}, {string},{string},{string}, {string}, {string}, {string};")
     public void a_request_is_prepared_for_creating_an_employee_with_data
@@ -132,6 +130,8 @@ public class APIWorkFlowSteps {
         String actual_empID = response.jsonPath().getString(empIDFromDB);
         // employee_id -> from POST call
         Assert.assertEquals(employee_id, actual_empID);
+
+
     }
 
     // verifying the elements of the response payload with request payload comparing one by one

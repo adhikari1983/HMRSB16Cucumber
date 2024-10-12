@@ -1,4 +1,4 @@
-package API;
+package apis.API;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
@@ -63,7 +63,7 @@ public class HardCodedExamples {
         // this is how we print out result in conventional java
         //System.out.println(response);
 
-        //but for RestAssured -> this method; we used to print the response of API in console
+        //but for RestAssured -> this method; we used to print the response of apis.API in console
         response.prettyPrint();
 
         //verify all the values and headers from response
@@ -112,6 +112,7 @@ public class HardCodedExamples {
 
         Response response = request.when().put("/updateEmployee.php");
         response.then().assertThat().statusCode(200);
+                                     //HamCrest Matchers example ............................
         response.then().assertThat().body("Message", equalTo("Employee record Updated"));
     }
 

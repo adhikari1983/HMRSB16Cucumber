@@ -18,13 +18,15 @@ public class ExcelReader {
         List<Map<String,String>> excelData = new ArrayList<>();
         try {
             fileInputStream = new FileInputStream(path);
-            // that special call which knows how to read the data from excel files
-            XSSFWorkbook xssfWorkbook = new XSSFWorkbook(fileInputStream);
+/*         that special call which knows how to read the data from excel files
+XSSFWorkbook is a class provided by the Apache POI library to handle Excel files in the .xlsx format (Excel 2007+).
+HSSFWorkbook is used for older .xls (Excel 97-2003) files.
+*/     XSSFWorkbook xssfWorkbook = new XSSFWorkbook(fileInputStream);
             Sheet sheet = xssfWorkbook.getSheet(sheetName);
-            /* headerRow the 1st row, these are the header keys that stays same -> that's why it is outside the loop
+/* headerRow the 1st row, these are the header keys that stays same -> that's why it is outside the loop
                Rest of the rows with values that changes                        -> that's why it is inside the loop
-               @@this rows is just for header keys, & we keep it on 0th row, coz it is not changing at all*/
-            Row headerRow = sheet.getRow(0);
+               @@this rows is just for header keys, & we keep it on 0th row, coz it is not changing at all
+*/     Row headerRow = sheet.getRow(0);
             //for rows, it starts from 1 index because 0 is already used for headers
             for (int rows = 1; rows < sheet.getPhysicalNumberOfRows(); rows++) {
                 //@@this row is just for values

@@ -3,14 +3,15 @@ package runners;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
-/**
- import com.github.mkolisnyk.cucumber.runner.ExtendedCucumber;
- import com.github.mkolisnyk.cucumber.runner.ExtendedCucumberOptions;
- import cucumber.api.CucumberOptions;
- import org.junit.runner.RunWith;
 
- @RunWith(ExtendedCucumber.class)
- @ExtendedCucumberOptions(retryCount = 3) and we can apply @Repeat(no. of times) annotation on Scenario
+/**
+ * import com.github.mkolisnyk.cucumber.runner.ExtendedCucumber;
+ * import com.github.mkolisnyk.cucumber.runner.ExtendedCucumberOptions;
+ * import cucumber.api.CucumberOptions;
+ * import org.junit.runner.RunWith;
+ *
+ * @RunWith(ExtendedCucumber.class)
+ * @ExtendedCucumberOptions(retryCount = 3) and we can apply @Repeat(no. of times) annotation on Scenario
  */
 @RunWith(Cucumber.class)
 @CucumberOptions(
@@ -20,9 +21,9 @@ import org.junit.runner.RunWith;
         //glue keyword we use-to provide the path of the package where all the step defs are available
         glue = {"steps"},
 
-        //when dryRun = true -> it stops actual execution, and then; it quickly scans all the steps def
-        // to provide the missing step definition
-        //when dryRun = false -> it executes the step defs
+        // when dryRun = true ->  it stops actual execution, and then; it quickly scans all the steps def
+        //                        to provide the missing step definition
+        // when dryRun = false -> it executes the step defs
         dryRun = false,
 
         //tags -> runs/executes the test case of our choice/selection
@@ -34,19 +35,19 @@ import org.junit.runner.RunWith;
         // tags = "@sprint1 and sprint2 and @sprint3 and @sprint4 and @sprint5"  -> boolean value should be true to run means all sprint needs to be there
         tags = "@validLogin",  /** most of the time we play with tags & some time dryRun just 2get missing step*/
 
-        //it means, sometimes the console output for cucumber test is having some
+        //it means, sometimes the console output of the cucumber test is having some
         //irrelevant information. But, when you set it to true, it removes all that
         //irrelevant information from the console and will give you simple output
         monochrome = false,
 
 
-        plugin = {"pretty",                    //it used to print all the steps in console
-                  "html:target/cucumber.html", //  this html plugin is generating the report, under target folder
-                  "json:target/cucumber.json", // for JSON report
-                   "rerun:target/failed.txt"}
+        plugin = {"pretty",                  //  it used to print all the steps in console
+                "html:target/cucumber.html", //  this html plugin is generating the report, under target folder
+                "json:target/cucumber.json", //  for JSON report
+                "rerun:target/failed.txt"}
 )
 public class RunnerClass {
 }
 /**
- "html:target/cucumber.html"  Basically it's been used everywhere
+ * "html:target/cucumber.html"  Basically it's been used everywhere
  */
