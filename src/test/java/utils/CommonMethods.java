@@ -174,7 +174,8 @@ public class CommonMethods extends PageInitializer {
     }
 */
 
-    public static byte[] takeScreenshot(String fileName) {
+    //this method is w/gpt edition original is the above one
+    public static byte[] takeScreenshot(WebDriver driver, String fileName) {
         // Check if the driver is initialized
         if (driver == null) {
             System.err.println("WebDriver is not initialized. Cannot take screenshot.");

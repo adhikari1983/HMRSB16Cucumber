@@ -26,9 +26,9 @@ public class Hooks extends CommonMethods {
         byte[] pic;
         //here we are going to capture the screenshot and attaching it to the report
         if(scenario.isFailed()) {
-            pic = takeScreenshot("failed/" + scenario.getName());
+            pic = takeScreenshot(driver,"failed/" + scenario.getName());
         }else {
-            pic = takeScreenshot("passed/" + scenario.getName());
+            pic = takeScreenshot(driver,"passed/" + scenario.getName());
         }
         // attaching this screenshot in the report
         scenario.attach(pic,"image/png",scenario.getName());

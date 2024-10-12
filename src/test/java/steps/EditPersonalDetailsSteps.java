@@ -47,7 +47,7 @@ public class EditPersonalDetailsSteps extends CommonMethods {
     public void user_clicks_on_the_save_button() throws InterruptedException {
         click(addPersonalDetails.saveButton);
 
-        takeScreenshot("editEmployee");
+        takeScreenshot(driver,"editEmployee");
 
 //        if (addPersonalDetails.saveButton.isDisplayed()) {
 //            Assert.assertTrue(true);
